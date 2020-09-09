@@ -1,0 +1,79 @@
+<article>
+    <p><span><b>A : De manière intuitive et sans rationaliser, représentez votre vie, telle que vous la vivez
+actuellement </b><i style="">(Les données saisies ne sont pas enregistrées, aussi, vous pouvez imprimer la page après avoir généré le graphique pour la suite du cours et/ou le garder pour vous)</i><b> :</b></span></p>
+</article>
+
+//<div id="inputdiv">
+<div id="inputdiv" style="float: left; width: 40%; margin: 10px; text-align: center;" data-children-count="21">
+    <input id="title-0" value="" placeholder="Domaine 1" type="text">
+    <input id="value-0" value="" placeholder="Valeur 1" type="text"><br>
+    <input id="title-1" value="" placeholder="Domaine 2" type="text">
+    <input id="value-1" value="" placeholder="Valeur 2" type="text"><br>
+    <input id="title-2" value="" placeholder="Domaine 3" type="text">
+    <input id="value-2" value="" placeholder="Valeur 3" type="text"><br>
+    <input id="title-3" value="" placeholder="Domaine 4" type="text">
+    <input id="value-3" value="" placeholder="Valeur 4" type="text"><br>
+    <input id="title-4" value="" placeholder="Domaine 5" type="text">
+    <input id="value-4" value="" placeholder="Valeur 5" type="text"><br>
+    <input id="title-5" value="" placeholder="Domaine 6" type="text">
+    <input id="value-5" value="" placeholder="Valeur 6" type="text"><br>
+    <input id="title-6" value="" placeholder="Domaine 7" type="text">
+    <input id="value-6" value="" placeholder="Valeur 7" type="text"><br>
+    <input id="title-7" value="" placeholder="Domaine 8" type="text">
+    <input id="value-7" value="" placeholder="Valeur 8" type="text"><br>
+    <input id="title-8" value="" placeholder="Domaine 9" type="text">
+    <input id="value-8" value="" placeholder="Valeur 9" type="text"><br>
+    <input id="title-9" value="" placeholder="Domaine 10" type="text">
+    <input id="value-9" value="" placeholder="Valeur 10" type="text"><br>
+    <input value="Générer graphique" onclick="updateChart();" type="button">
+</div>
+
+<div id="chartdiv" style="float: left; width: 40%; height: 400px;"></div>
+
+
+
+
+
+
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/pie.js"></script>
+
+<script>
+    var chart = AmCharts.makeChart("chartdiv", {
+        "type": "pie",
+        "dataProvider": [{
+            "domaine": "a",
+            "valeurs": 501
+        }, {
+            "domaine": "b",
+            "valeurs": 301
+        }, {
+            "domaine": "c",
+            "valeurs": 201
+        }, {
+            "domaine": "d",
+            "valeurs": 165
+        }, {
+            "domaine": "e",
+            "valeurs": 139
+        }, {
+            "domaine": "f",
+            "valeurs": 128
+        }],
+        "valueField": "valeurs",
+        "titleField": "domaine"
+    });
+
+    function updateChart() {
+        chart.dataProvider = [];
+        for (var i = 0; i <= 9; i++) {
+            if (Number(document.getElementById('value-' + i).value)) {
+                chart.dataProvider.push({
+                    "domaine": document.getElementById('title-' + i).value,
+                    "valeurs": Number(document.getElementById('value-' + i).value)
+                })
+            }
+        }
+        chart.validateData();
+    }
+</script>
